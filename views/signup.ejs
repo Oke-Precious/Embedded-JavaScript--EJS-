@@ -1,136 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Signup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <style>
-    /* From Uiverse.io by alexruix */ 
-.form-box {
-  max-width: 700px;
-  background: #f1f7fe;
-  overflow: hidden;
-  border-radius: 16px;
-  color: #010101;
-}
+  :root {
+    --page-bg: #f8f4ec;
+    --panel-bg: #fffdf9;
+    --text-main: #1f1a15;
+    --text-muted: #6a6158;
+    --line: #dacfbf;
+    --focus: #ef8f3c;
+    --accent: #214e34;
+    --accent-hover: #173927;
+    --chip-bg: #efe5d7;
+    --danger: #c1262f;
+    --shadow-soft: 0 18px 45px rgba(31, 26, 21, 0.12);
+  }
 
-.form {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 32px 24px 24px;
-  gap: 16px;
-  text-align: center;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-/*Form text*/
-.title {
-  font-weight: bold;
-  font-size: 1.6rem;
-}
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: var(--page-bg);
+    color: var(--text-main);
+    font-family: 'DM Sans', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+  }
 
-.subtitle {
-  font-size: 1rem;
-  color: #666;
-}
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.75;
+  }
 
-/*Inputs box*/
-.form-container {
-  overflow: hidden;
-  border-radius: 8px;
-  background-color: #fff;
-  margin: 1rem 0 .5rem;
-  width: 100%;
-}
+  body::before {
+    width: 280px;
+    height: 280px;
+    top: -70px;
+    left: -90px;
+    background: #f0c77c;
+  }
 
-.input {
-  background: none;
-  border: 0;
-  outline: 0;
-  height: 40px;
-  width: 100%;
-  border-bottom: 1px solid #eee;
-  font-size: .9rem;
-  padding: 8px 15px;
-}
+  body::after {
+    width: 240px;
+    height: 240px;
+    right: -70px;
+    bottom: -60px;
+    background: #b7d8bf;
+  }
 
-.form-section {
-  padding: 16px;
-  font-size: .85rem;
-  background-color: #e0ecfb;
-  box-shadow: rgb(0 0 0 / 8%) 0 -1px;
-}
+  .form-box {
+    width: min(900px, 100%);
+    background: var(--panel-bg);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: var(--shadow-soft);
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    overflow: hidden;
+  }
 
-.form-section a {
-  font-weight: bold;
-  color: #0066ff;
-  transition: color .3s ease;
-}
+  .hero {
+    background: #eaddcb;
+    border-right: 1px solid var(--line);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+  }
 
-.form-section a:hover {
-  color: #005ce6;
-  text-decoration: underline;
-}
+  .eyebrow {
+    width: fit-content;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--chip-bg);
+    border: 1px solid #dccdb8;
+    color: #5f5348;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
 
-/*Button*/
-.form button {
-  background-color: #0066ff;
-  color: #fff;
-  border: 0;
-  border-radius: 24px;
-  padding: 10px 16px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color .3s ease;
-}
+  .hero h1 {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.9rem, 3.1vw, 2.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
 
-.form button:hover {
-  background-color: #005ce6;
-}
+  .hero p {
+    margin: 0;
+    max-width: 34ch;
+    color: #5e544a;
+    line-height: 1.55;
+  }
+
+  .form {
+    padding: 38px 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 0.96rem;
+  }
+
+  .form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .input {
+    width: 100%;
+    min-height: 46px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #ffffff;
+    color: var(--text-main);
+    font: inherit;
+    font-size: 0.95rem;
+    padding: 10px 12px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .input::placeholder {
+    color: #978d83;
+  }
+
+  .input:focus {
+    border-color: var(--focus);
+    box-shadow: 0 0 0 3px rgba(239, 143, 60, 0.2);
+  }
+
+  #email,
+  #studentId,
+  #password {
+    grid-column: 1 / -1;
+  }
+
+  #errorMessage {
+    grid-column: 1 / -1;
+    min-height: 1.2rem;
+    margin-top: 2px !important;
+    color: var(--danger) !important;
+    font-size: 0.86rem !important;
+  }
+
+  .form button {
+    margin-top: 2px;
+    min-height: 48px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--accent);
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.16s ease;
+  }
+
+  .form button:hover {
+    background: var(--accent-hover);
+  }
+
+  .form button:active {
+    transform: translateY(1px);
+  }
+
+  .form-section {
+    margin-top: 2px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .form-section p {
+    margin: 0;
+  }
+
+  .form-section a {
+    color: #9d4e1d;
+    font-weight: 600;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
+
+  .form-section a:hover {
+    color: #7d3d16;
+  }
+
+  @media (max-width: 860px) {
+    .form-box {
+      grid-template-columns: 1fr;
+    }
+
+    .hero {
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+      padding: 28px 24px;
+      gap: 12px;
+    }
+
+    .form {
+      padding: 26px 20px 22px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .form-container {
+      grid-template-columns: 1fr;
+    }
+
+    #email,
+    #studentId,
+    #password {
+      grid-column: auto;
+    }
+  }
 </style>
+
 <body>
-    <!-- From Uiverse.io by alexruix --> 
-<div class="form-box">
-<div class="form">
-    <span class="title">Sign up</span>
-    <span class="subtitle">Create a free account with your email.</span>
-    <div class="form-container">
-      <input type="text" class="input" placeholder="Full Name" id="fullName">
-			<input type="email" class="input" placeholder="Email" id="email">
-			<input type="password" class="input" placeholder="Password" id="password">
-      <div id="errorMessage" style="color: red; font-size: 0.9rem; margin-top: 10px;"></div>
+  <form class="form-box" action="/postit" method="POST">
+    <aside class="hero">
+      <span class="eyebrow">Student Portal</span>
+      <h1>Start your profile in less than a minute</h1>
+      <p>Join your campus workspace, manage records, and keep your student details organized in one place.</p>
+    </aside>
+
+    <div class="form">
+      <span class="title">Sign up</span>
+      <span class="subtitle">Create a free account with your email.</span>
+      <div class="form-container">
+        <input type="text" class="input" placeholder="First Name" id="firstName" name="firstName">
+        <input type="text" class="input" placeholder="Last Name" id="lastName" name="lastName">
+        <input type="email" class="input" placeholder="Email" id="email" name="email">
+        <input type="text" class="input" placeholder="Student ID" id="studentId" name="studentId">
+        <input type="password" class="input" placeholder="Password" id="password" name="password">
+        <div id="errorMessage" style="color: red; font-size: 0.9rem; margin-top: 10px;"></div>
+      </div>
+      <button type="submit" onclick="signUp()">Create account</button>
+      <div class="form-section">
+        <p>Have an account? <a href="">Log in</a></p>
+      </div>
     </div>
-    <button onclick="signUp()">Sign up</button>
-  </div>
-<div class="form-section">
-  <p>Have an account? <a href="">Log in</a> </p>
-</div>
-</div>
+  </form>
 </body>
 
 <script>
-  const signUp = () =>{
-    const fullName = document.getElementById('fullName').value;
+  const signUp = () => {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const errorMessage = document.getElementById('errorMessage');
-    
-    if(fullName== '' || email== '' || password== ''){
+
+    if (firstName == '' || lastName == '' || email == '' || password == '') {
       errorMessage.innerHTML = `Please fill in all fields.`;
       return;
     }
-    else if(password.length < 8){
+    else if (password.length < 8) {
       errorMessage.innerHTML = `Password must be at least 8 characters long.`;
       return;
     }
-    else{
+    else {
       errorMessage.innerHTML = '';
       // Proceed with form submission or further processing
       console.log('Form submitted:', { fullName, email, password });
     }
-    
+
   }
 </script>
+
 </html>
