@@ -32,7 +32,7 @@ const getStudent = async (req, res) => {
        const allStudents = await studentModel.find();
     //    const studentId = await studentModel.findOne({student_id : ""})
         console.log(allStudents);
-        res.status(200).json({ message: 'All students retrieved successfully', allStudents });
+        res.status(200).json({ message: 'All students retrieved successfully', data: allStudents });
     } catch(err){
         console.log(err);
         res.status(401).json({ message: 'Something went wrong Error retrieving students' });
