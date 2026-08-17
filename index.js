@@ -2,10 +2,13 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
+const cors = require('cors');
 const port = process.env.PORT;
 const uri = process.env.MONGO_URI;
 const studentModel = require('./models/student.model');
 const router = require('./routes/student.route');
+
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
