@@ -6,7 +6,8 @@ const studentSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     active_status: { type: Boolean, required: true, default: true },
     studentId: { type: String, required: true, unique: false },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now },
 });
 
 const studentModel = mongoose.model('Student', studentSchema);
