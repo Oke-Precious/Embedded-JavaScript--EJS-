@@ -1,4 +1,5 @@
 const studentModel = require('../models/student.model');
+const bcrypt = require('bcryptjs');
 
 const getHompage =  (req, res) => {
     res.send("tan o wa nibe");
@@ -6,6 +7,9 @@ const getHompage =  (req, res) => {
 
 const postStudent = async (req, res) => {
     try {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.password, salt);
+        req.body.password = hashedPassword;
         const newStudent = new studentModel({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
